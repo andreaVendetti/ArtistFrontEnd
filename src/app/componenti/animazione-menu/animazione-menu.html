@@ -1,0 +1,13 @@
+    <a nz-button nzType="text" style="font-size: xx-large; color: black;" (click)="toggle()">
+        Paolo Frattarola
+    </a>
+    
+@if (isShown()) {
+  <div class="enter-container" animate.enter="enter-animation">
+    <a nz-button nz-type="text" routerLink="/opere">Opere</a>
+  </div>
+}@else {
+  <div class="leave-container" animate.leave="leaving">
+    <p>Goodbye</p>
+  </div>
+}

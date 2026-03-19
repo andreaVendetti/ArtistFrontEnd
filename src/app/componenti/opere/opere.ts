@@ -1,17 +1,27 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { OperaService } from '../../services/opera-service';
+import { MaterialModule } from '../../material-module/material-module-module';
+
 
 @Component({
   selector: 'app-opere',
-  imports: [],
+  imports: [MaterialModule],
   templateUrl: './opere.html',
   styleUrl: './opere.css',
 })
 
-export class Opere {
+export class Opere implements OnInit{
+  opere : any
+   
+  constructor(private servizioOpere : OperaService){}
 
-  constructor(private route: ActivatedRoute, private servizioOpere : OperaService){}
+  ngOnInit(): void {
+    this.servizioOpere.getOpere().subscribe(data => {
+      this.opere = data;
+      console.log(this.opere)
+    })
+  }
+
 
   
 }
