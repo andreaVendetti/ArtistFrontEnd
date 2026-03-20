@@ -18,7 +18,7 @@ export class Opere implements OnInit{
   ngOnInit(): void {
     this.servizioOpere.getOpere().subscribe(data => {
       this.opere = data;
-      console.log(this.opere)
+     
     })
   }
 

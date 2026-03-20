@@ -3,5 +3,6 @@ export interface Opera{
     titolo: string,
     descrizione: string,
     imgPath: string,
-    anno: number
+    anno: number,
+    work: boolean
 }

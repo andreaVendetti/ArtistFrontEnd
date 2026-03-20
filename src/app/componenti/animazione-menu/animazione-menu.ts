@@ -1,5 +1,6 @@
 import {Component, signal} from '@angular/core';
 import { RouterLink } from "@angular/router";
+
 @Component({
   selector: 'app-menu',
   templateUrl: 'animazione-menu.html',
@@ -7,8 +8,14 @@ import { RouterLink } from "@angular/router";
   imports: [RouterLink],
 })
 export class EnterAnimation {
-  isShown = signal(false);
-  toggle() {
-    this.isShown.update((isShown) => !isShown);
+
+  
+  mouseIn  = signal(false)
+  show() {
+    this.mouseIn.set(true);
+  }
+
+  hide() {
+    this.mouseIn.set(false);
   }
 }

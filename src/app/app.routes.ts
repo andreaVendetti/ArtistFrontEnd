@@ -5,7 +5,7 @@ import { OperaComponent } from './opera-component/opera-component';
 
 export const routes: Routes = [
     {path: "", component: Home, children:[
-        {path: "opere", component: Opere, children: [
+        {path: "works", component: Opere, children: [
             {path:":id", component: OperaComponent}
         ]}
     ]}
