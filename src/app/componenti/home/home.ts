@@ -3,7 +3,9 @@ import { OnInit } from '@angular/core';
 import { OperaService } from '../../services/opera-service';
 import { Opera } from '../../models/opera';
 import { EnterAnimation } from '../animazione-menu/animazione-menu';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterOutlet } from '@angular/router';
+import { ServizioHome } from '../../services/servizio-home';
+
 
 
 @Component({
@@ -17,17 +19,15 @@ import { RouterOutlet } from '@angular/router';
 export class Home implements OnInit {
   opere : Opera[] = []
   
-  isHome = true;
-
-  constructor(private servizioOpera : OperaService){}
+  
+  constructor(private servizioOpera : OperaService, public homeService : ServizioHome, public router : Router ){}
 
   ngOnInit(): void {
     this.servizioOpera.getOpere().subscribe((data) => {
       this.opere = data;
     })
-
+   
   }
-
   
 
 }

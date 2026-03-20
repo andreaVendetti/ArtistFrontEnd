@@ -1,21 +1,21 @@
 <div>
 
     @for (opera of opere; track $index) {
-    @if(opera.work == true){
+        @if(opera.work == true){
 
-        <div class="contenitore">
-            <mat-card  style="max-width: 800px;" appearance="outlined" >
-                <mat-card-header>
-                    <mat-card-title>{{opera.titolo}}</mat-card-title>
-                    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-                </mat-card-header>
-                <img mat-card-image  src="http://localhost:8080/images/{{opera.imgPath}}"   alt="Work">
-                <mat-card-content>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <br>
-    }
+            <div class="contenitore">
+                <mat-card  style="max-width: 800px;" appearance="outlined" >
+                    <mat-card-header>
+                        <mat-card-title>{{opera.titolo}}</mat-card-title>
+                        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                    </mat-card-header>
+                    <img mat-card-image  src="http://localhost:8080/images/{{opera.imgPath}}"   alt="Work">
+                    <mat-card-content>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <br>
+        }
     }
 
 </div>

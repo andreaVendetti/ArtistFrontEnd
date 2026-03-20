@@ -1,9 +1,12 @@
 <div style="text-align: center; padding: 50px;">
-   <app-menu></app-menu>
+   <app-menu ></app-menu>
 </div>
 <router-outlet routerLink="/works"></router-outlet>
 
+@if (router.url === "/") {
 
-<div class="hero" style="display: flex; justify-content: center;">
-   <img style="height: 600px;" src="http://localhost:8080/images/{{opere[1].imgPath}}" alt="Work">
-</div>
+   <div class="hero" style="display: flex; justify-content: center;">
+      <img style="height: 600px;" src="http://localhost:8080/images/{{opere[1].imgPath}}" alt="Work">
+   </div>
+}
+   
