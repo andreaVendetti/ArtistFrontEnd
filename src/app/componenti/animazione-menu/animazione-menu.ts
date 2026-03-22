@@ -3,6 +3,7 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-menu',
+  standalone: true,
   templateUrl: 'animazione-menu.html',
   styleUrls: ['animazione-menu.css'],
   imports: [RouterLink],
@@ -18,4 +19,9 @@ export class EnterAnimation {
   hide() {
     this.mouseIn.set(false);
   }
+  
+  toggle(){
+    this.mouseIn.set(!this.mouseIn())
+  }
+
 }
