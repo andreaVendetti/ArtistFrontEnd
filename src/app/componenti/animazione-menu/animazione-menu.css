@@ -1,12 +1,8 @@
 .enter-container {
-   
   top: 50px;          
-  left: 0;
-  
+  left: 0;  
   padding: 10px;
-  
-        
-  
+  font-weight: bold;
 }
 .enter-container p {
   margin: 0;

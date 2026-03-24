@@ -1,5 +1,5 @@
-<div   style="display: block;">
-  <a nz-button nzType="text"  (mouseenter)="show()" (mouseleave)="hide()" (click)="mouseIn.set(false)" style="font-size: xx-large; color: black;">
+<div   style="display: block;" (mouseenter)="show()" (mouseleave)="hide()" (click)="mouseIn.set(false)">
+  <a nz-button nzType="text"   style="font-size: xx-large; color: black;">
     Paul Frattarola
   </a>
   
@@ -10,6 +10,9 @@
       </div>
       <div>
         <a nz-button nz-type="text" routerLink="/works" style="color: black;">Works</a>
+      </div>
+      <div>
+        <a nz-button nz-type="text" routerLink="/about" style="color: black;">Profile</a>
       </div>
     </div>
   }

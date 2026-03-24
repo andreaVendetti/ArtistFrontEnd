@@ -1,0 +1,22 @@
+ <div>
+     <form nz-form class="login-form" [formGroup]="loginForm">
+        <nz-form-item>
+            <nz-input-wrapper>
+                <input type="text" nz-input name="email" formControlName="email"  placeholder="Email" />
+            </nz-input-wrapper>
+            @if (!loginForm.get("email")?.valid && loginForm.touched) {
+                <p class="error-text">Inserisci un'email valida</p>
+            }
+        </nz-form-item>
+        <nz-form-item>
+            <nz-input-password>
+                <input nz-input name="password" formControlName="password" placeholder="Password" />
+            </nz-input-password>
+                @if (!loginForm.get("password")?.valid && loginForm.touched) {
+                <p class="error-text">Inserisci una password</p>
+            }
+        </nz-form-item>
+           
+        <button nz-button [disabled]="!loginForm.valid"  nzType="primary">Log in</button>
+        </form>
+    </div>
