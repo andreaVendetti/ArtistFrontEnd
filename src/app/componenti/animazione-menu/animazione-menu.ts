@@ -1,5 +1,6 @@
 import {Component, signal} from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { AuthService } from '../../auth/auth-service';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +11,9 @@ import { RouterLink } from "@angular/router";
 })
 export class EnterAnimation {
 
+  constructor(public auth: AuthService){
+    
+  }
   
   mouseIn  = signal(false)
   show() {

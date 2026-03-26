@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { NZ_LOGIN_MODULES } from '../../ng-zorro/imports';
+import { AuthService } from '../../auth/auth-service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,9 @@ import { NZ_LOGIN_MODULES } from '../../ng-zorro/imports';
 export class Login implements OnInit {
   
   loginForm! : FormGroup
- 
+  error = ""
+
+  constructor(private auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -22,7 +26,17 @@ export class Login implements OnInit {
   }
   
   onSubmit(){
-    
+    if(this.loginForm.invalid){
+      return;
+    }
+
+    const{ email, pass} = this.loginForm.value;
+
+    this.auth.login(email, pass).subscribe({
+        next: () => this.router.navigate(["/admin"]),
+        error: () => this.error = "Email o password errati"
+    });
+
   }
 
 
