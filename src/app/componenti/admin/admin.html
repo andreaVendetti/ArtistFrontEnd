@@ -1,1 +1,69 @@
-<p>admin works!</p>
+<div class="admin-container">
+
+
+  <div class="admin-header">
+    <h2>Pannello Admin</h2>
+    <div class="header-buttons">
+      <button mat-button (click)="apriFormNuova()">+ Aggiungi opera</button>
+      <button mat-button (click)="mostraFormUtente.set(true)">Il mio profilo</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  @if (mostraFormOpera()) {
+    <div class="overlay">
+      <div class="form-container">
+        <h2>{{ operaSelezionata ? 'Modifica opera' : 'Nuova opera' }}</h2>
+
+        <label>Titolo</label>
+        <input [(ngModel)]="formOpera.titolo" placeholder="Titolo" />
+
+        <label>Descrizione</label>
+        <textarea [(ngModel)]="formOpera.descrizione" placeholder="Descrizione"></textarea>
+
+        <label>Anno</label>
+        <input [(ngModel)]="formOpera.anno" type="number" placeholder="Anno" />
+
+        <label>Percorso immagine</label>
+        <input [(ngModel)]="formOpera.imgPath" placeholder="es. opera.jpg" />
+
+        <label>
+          <input [(ngModel)]="formOpera.work" type="checkbox" />
+          Opera in evidenza
+        </label>
+
+        <div class="form-buttons">
+          <button mat-button (click)="salvaOpera()">Salva</button>
+          <button mat-button (click)="mostraFormOpera.set(false)">Annulla</button>
+        </div>
+      </div>
+    </div>
+  }
+
+
+  @if (mostraFormUtente()) {
+    <div class="overlay">
+      <div class="form-container">
+        <h2>Il mio profilo</h2>
+
+        <label>Nome</label>
+        <input [(ngModel)]="formUtente.nome" placeholder="Nome" />
+
+        <label>Cognome</label>
+        <input [(ngModel)]="formUtente.cognome" placeholder="Cognome" />
+
+        <label>Email</label>
+        <input [(ngModel)]="formUtente.email" type="email" placeholder="Email" />
+
+        <label>Nuova password</label>
+        <input [(ngModel)]="formUtente.pass" type="password" placeholder="Lascia vuoto per non cambiare" />
+
+        <div class="form-buttons">
+          <button mat-button (click)="salvaDatiUtente()">Salva</button>
+          <button mat-button (click)="mostraFormUtente.set(false)">Annulla</button>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

@@ -12,6 +12,12 @@
                     <img mat-card-image  src="http://localhost:8080/images/{{opera.imgPath}}"   alt="Work">
                     <mat-card-content>
                     </mat-card-content>
+                    @if(auth.isAdmin()) {
+                        <mat-card-actions>
+                        <button mat-button (click)="modifica(opera.id)"> Modifica</button>
+                        <button mat-button (click)="elimina(opera.id)"> Elimina</button>
+                        </mat-card-actions>
+                    }
                 </mat-card>
             </div>
             <br>

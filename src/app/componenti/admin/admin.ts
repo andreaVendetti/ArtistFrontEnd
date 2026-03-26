@@ -3,12 +3,13 @@ import { Opera } from '../../models/opera';
 import { Utente } from '../../models/utente';
 import { OperaService } from '../../services/opera-service';
 import { AuthService } from '../../auth/auth-service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtenteService } from '../../services/utente-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })
@@ -20,13 +21,14 @@ export class Admin implements OnInit{
   operaSelezionata: Opera | null = null;
   mostraFormOpera = signal(false);
 
-  formUtente: Utente = {id: 0, nome: "", cognome: "", email: "", pass: "", admin: false};
+  formUtente: Utente = {id: 0, nome: "", cognome: "", email: "", pass: "", admin: 0};
   mostraFormUtente= signal(false);
 
   constructor(private operaService: OperaService,
               public auth: AuthService,
               private router: Router,
-              private utenteService: UtenteService
+              private utenteService: UtenteService,
+              private routes: ActivatedRoute
               ){}
 
   ngOnInit(): void {
@@ -36,7 +38,15 @@ export class Admin implements OnInit{
     this.formUtente.cognome = userAdmin.cognome;
     this.formUtente.email = userAdmin.email;
     this.formUtente.admin = userAdmin.admin;
-
+    
+    this.routes.queryParams.subscribe(params => {
+    if (params['modifica']) {
+      const id = Number(params['modifica']);
+      this.operaService.get(id).subscribe(opera => {
+        this.apriFormModifica(opera);
+      });
+    }
+  });
   }
 
   caricaOpere(){

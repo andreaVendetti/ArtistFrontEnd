@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { OperaService } from '../../services/opera-service';
 import { MaterialModule } from '../../material-module/material-module-module';
 import { ServizioHome } from '../../services/servizio-home';
+import { AuthService } from '../../auth/auth-service';
+import { routes } from '../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-opere',
@@ -13,7 +16,7 @@ import { ServizioHome } from '../../services/servizio-home';
 export class Opere implements OnInit{
   opere : any
    
-  constructor(private servizioOpere : OperaService, private servizioHome : ServizioHome){}
+  constructor(private servizioOpere : OperaService, private servizioHome : ServizioHome, public auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.servizioHome.isHome.set(false)
@@ -24,6 +27,11 @@ export class Opere implements OnInit{
    
   }
 
+  modifica(idO : number){
+    this.router.navigate(['/admin'], { queryParams: { modifica: idO } });
+  }
 
-  
+  elimina(idO : number){
+    this.router.navigate(["/admin"], {queryParams :{ elimina : idO}})
+  }
 }

@@ -22,7 +22,7 @@ export class AuthService {
   //quando la risposta arriva, prima di darla al componente, salva l'utente in _utente e in localStorage.
   //Il tap non modifica la risposta, la intercetta solo per fare un'azione aggiuntiva.
   login(pass: string, email: string): Observable<any>{
-    return this.http.post("${this.url}/login", {email, pass}).pipe(
+    return this.http.post(`${this.url}/login`, {email, pass}).pipe(
       tap((res: any) =>{
         this._utente = res;
         localStorage.setItem("utente", JSON.stringify(res));

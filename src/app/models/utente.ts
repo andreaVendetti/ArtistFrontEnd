@@ -4,5 +4,5 @@ export interface Utente{
     cognome: string,
     email: string,
     pass: string,
-    admin: boolean
+    admin: number
 }
