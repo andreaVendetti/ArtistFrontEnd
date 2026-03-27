@@ -3,7 +3,6 @@ import { OperaService } from '../../services/opera-service';
 import { MaterialModule } from '../../material-module/material-module-module';
 import { ServizioHome } from '../../services/servizio-home';
 import { AuthService } from '../../auth/auth-service';
-import { routes } from '../../app.routes';
 import { Router } from '@angular/router';
 
 @Component({

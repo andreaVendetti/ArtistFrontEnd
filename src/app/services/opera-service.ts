@@ -15,7 +15,7 @@ export class OperaService {
   }
 
   get(id: number): Observable<Opera>{
-    return this.http.get<Opera>(`${this.apiUrl}$/{id}`);
+    return this.http.get<Opera>(`${this.apiUrl}/${id}`);
   }
 
   create(opera: Opera): Observable<Opera>{

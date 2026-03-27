@@ -27,12 +27,13 @@ export class Login implements OnInit {
   
   onSubmit(){
     if(this.loginForm.invalid){
+      
       return;
     }
 
-    const{ email, pass} = this.loginForm.value;
-
-    this.auth.login(email, pass).subscribe({
+    const{ email, password} = this.loginForm.value;
+    
+    this.auth.login(email, password).subscribe({
         next: () => this.router.navigate(["/admin"]),
         error: () => this.error = "Email o password errati"
     });

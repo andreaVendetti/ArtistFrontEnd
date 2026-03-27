@@ -26,12 +26,7 @@
 
         <label>Percorso immagine</label>
         <input [(ngModel)]="formOpera.imgPath" placeholder="es. opera.jpg" />
-
-        <label>
-          <input [(ngModel)]="formOpera.work" type="checkbox" />
-          Opera in evidenza
-        </label>
-
+        
         <div class="form-buttons">
           <button mat-button (click)="salvaOpera()">Salva</button>
           <button mat-button (click)="mostraFormOpera.set(false)">Annulla</button>

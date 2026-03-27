@@ -1,0 +1,149 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-header h2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-buttons button {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.header-buttons button:hover {
+  background: black;
+  color: white;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* FORM */
+.form-container {
+  background: white;
+  padding: 2rem;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.form-container h2 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.form-container label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  border-color: black;
+}
+
+.form-container textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-container input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* BOTTONI FORM */
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-buttons button {
+  flex: 1;
+  padding: 0.7rem;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.form-buttons button:first-child {
+  background: black;
+  color: white;
+}
+
+.form-buttons button:first-child:hover {
+  background: #333;
+}
+
+.form-buttons button:last-child {
+  background: white;
+  color: black;
+}
+
+.form-buttons button:last-child:hover {
+  background: #f5f5f5;
+}
