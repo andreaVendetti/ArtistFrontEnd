@@ -35,7 +35,14 @@ export class AuthService {
     localStorage.removeItem("utente");
   }
 
-    
+  validateToken(): Observable<any> {
+    const token = this._utente?.token;
+    return this.http.get(`${this.url}/validate`, {
+          headers: { Authorization: `Bearer ${token}` }
+  });
+}  
+
+
   // il doppio "!!" trasforma qualsiasi valore in true o false
   isLogged(){
     return !!this._utente;

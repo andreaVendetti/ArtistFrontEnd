@@ -35,7 +35,10 @@ export class Login implements OnInit {
     
     this.auth.login(email, password).subscribe({
         next: () => this.router.navigate(["/admin"]),
-        error: () => this.error = "Email o password errati"
+        error: (err) =>{
+          console.log(err)
+           this.error = "Email o password errati"
+        }
     });
 
   }
