@@ -1,5 +1,23 @@
-.contenitore {
+.lista-opere {
   display: flex;
-  justify-content: center;  
-  align-items: center;      
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.contenitore {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+mat-card {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contenitore {
+    max-width: 95%;
+  }
 }

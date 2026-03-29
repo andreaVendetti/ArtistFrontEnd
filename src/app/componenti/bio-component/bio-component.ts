@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { OperaService } from '../../services/opera-service';
 import { Opera } from '../../models/opera';
 
@@ -12,11 +12,14 @@ export class BioComponent implements OnInit {
   
   imgP : any = null
 
-  constructor(private operaService : OperaService){}
+  constructor(private operaService : OperaService,  private cdr: ChangeDetectorRef, private zone :NgZone){}
   
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.operaService.get(3).subscribe((data) => {
-      this.imgP = data
+      this.zone.run(() => {
+        this.imgP = data;
+        this.cdr.detectChanges();
+      });
     });
   }
 }

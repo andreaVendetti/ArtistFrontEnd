@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtenteService } from '../../services/utente-service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-admin',
@@ -26,6 +27,7 @@ export class Admin implements OnInit{
   mostraFormUtente= signal(false);
 
   uploadInCorso = false; // serve per mostrare un loader durante l'upload appunto
+  private apiUrl = `${environment.apiUrl}/api`;
 
   constructor(private operaService: OperaService,
               public auth: AuthService,
@@ -71,7 +73,7 @@ export class Admin implements OnInit{
     this.mostraFormOpera.set(true);
   }
 
-  onFileSelected(event: any) {
+ onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -80,10 +82,10 @@ export class Admin implements OnInit{
     const formData = new FormData();
     formData.append('file', file);
 
-    this.http.post<any>('http://localhost:8080/api/opere/upload', formData)
+    this.http.post<any>(`${this.apiUrl}/opere/upload`, formData)  // ← cambiato
       .subscribe({
         next: (res) => {
-          this.formOpera.imgPath = res.url; // salva URL Cloudinary
+          this.formOpera.imgPath = res.url;
           this.uploadInCorso = false;
         },
         error: () => {

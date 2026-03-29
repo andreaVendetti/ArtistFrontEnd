@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Opera } from '../models/opera';
+import { environment } from '../componenti/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OperaService {
-  private apiUrl = "http://localhost:8080/api/opere"
+  private apiUrl = `${environment.apiUrl}/api/opere`;
   constructor(private http : HttpClient){}
  
   getOpere(): Observable <Opera[]>{

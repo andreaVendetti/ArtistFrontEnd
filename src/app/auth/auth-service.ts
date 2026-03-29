@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { environment } from '../componenti/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
 
 
-  private url = "http://localhost:8080/api/auth";
+  private apiUrl = `${environment.apiUrl}/api/opere`;
   //variabile peer indicare l'utente loggato
   private _utente : any = null;
 
@@ -22,7 +23,7 @@ export class AuthService {
   //quando la risposta arriva, prima di darla al componente, salva l'utente in _utente e in localStorage.
   //Il tap non modifica la risposta, la intercetta solo per fare un'azione aggiuntiva.
   login(email: string, password: string): Observable<any>{
-    return this.http.post(`${this.url}/login`, {email, password}).pipe(
+    return this.http.post(`${this.apiUrl}/login`, {email, password}).pipe(
       tap((res: any) =>{
         this._utente = res;
         localStorage.setItem("utente", JSON.stringify(res));
@@ -37,7 +38,7 @@ export class AuthService {
 
   validateToken(): Observable<any> {
     const token = this._utente?.token;
-    return this.http.get(`${this.url}/validate`, {
+    return this.http.get(`${this.apiUrl}/validate`, {
           headers: { Authorization: `Bearer ${token}` }
   });
 }  

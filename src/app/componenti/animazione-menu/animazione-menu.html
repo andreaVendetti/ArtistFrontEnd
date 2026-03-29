@@ -1,25 +1,24 @@
-<div   style="display: block;" (mouseenter)="show()" (mouseleave)="hide()" (click)="mouseIn.set(false)">
-  <a nz-button nzType="text"   style="font-size: xx-large; color: black;">
+<div style="display: block;" 
+     (mouseenter)="show()" 
+     (mouseleave)="hide()">
+  
+  <a style="font-size: xx-large; color: black; cursor: pointer;"
+        (click)="toggleMenu()">
     Paolo Frattarola
   </a>
-  
-  @if (mouseIn()) {
-    <div class="enter-container" animate.enter="enter-animation" animate.leave="leaving" >
-      <div>
-        <a nz-button nz-type="text" routerLink="/" style="color: black;">Home</a>
+
+  @if (mouseIn) {
+
+    <div class="enter-container">
+      <div (click)="chiudiMenu()">
+        <a routerLink="/" style="color: black;">Home</a>
       </div>
-      <div>
-        <a nz-button nz-type="text" routerLink="/works" style="color: black;">Works</a>
+      <div (click)="chiudiMenu()">
+        <a routerLink="/works" style="color: black;">Works</a>
       </div>
-      <div>
-        <a nz-button nz-type="text" routerLink="/about" style="color: black;">Profile</a>
+      <div (click)="chiudiMenu()">
+        <a routerLink="/about" style="color: black;">Profile</a>
       </div>
-      @if(auth.isAdmin()){
-        <div>
-        <a nz-button nz-type="text" routerLink="/admin" style="color: black;">Admin</a>
-      </div>
-      }
     </div>
   }
 </div>
-

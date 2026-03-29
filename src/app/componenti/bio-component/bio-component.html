@@ -15,6 +15,8 @@
   </div>
 
   <div class="img-container">
-    <img class="imgProfile" [src]="imgP.imgPath" alt="Paolo Frattarola" />
+    @if (imgP) {
+      <img class="imgProfile" [src]="imgP.imgPath" alt="Paolo Frattarola" />
+    }
   </div>
 </div>

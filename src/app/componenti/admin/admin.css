@@ -5,7 +5,6 @@
   font-family: sans-serif;
 }
 
-/* HEADER */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -43,7 +42,6 @@
   color: white;
 }
 
-/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
@@ -57,7 +55,6 @@
   z-index: 1000;
 }
 
-/* FORM */
 .form-container {
   background: white;
   padding: 2rem;
@@ -113,7 +110,6 @@
   margin-right: 0.5rem;
 }
 
-/* BOTTONI FORM */
 .form-buttons {
   display: flex;
   gap: 1rem;
@@ -146,4 +142,26 @@
 
 .form-buttons button:last-child:hover {
   background: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header-buttons button {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 95%;
+    padding: 1.5rem;
+  }
 }

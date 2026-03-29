@@ -1,31 +1,40 @@
-import {Component, signal} from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { AuthService } from '../../auth/auth-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   templateUrl: 'animazione-menu.html',
   styleUrls: ['animazione-menu.css'],
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
 })
 export class EnterAnimation {
 
-  constructor(public auth: AuthService){
-    
-  }
-  
-  mouseIn  = signal(false)
+  mouseIn = false;
+
+  constructor(public auth: AuthService, private cdr: ChangeDetectorRef) {}
+
   show() {
-    this.mouseIn.set(true);
+    if (!this.isMobile()) this.mouseIn = true;
   }
 
   hide() {
-    this.mouseIn.set(false);
-  }
-  
-  toggle(){
-    this.mouseIn.set(!this.mouseIn())
+    if (!this.isMobile()) this.mouseIn = false;
   }
 
+  isMobile(): boolean {
+    return window.innerWidth <= 768;
+  }
+
+  toggleMenu() {
+    this.mouseIn = !this.mouseIn;
+    this.cdr.detectChanges(); // forza aggiornamento UI
+  }
+
+  chiudiMenu() {
+    this.mouseIn = false;
+    this.cdr.detectChanges();
+  }
 }

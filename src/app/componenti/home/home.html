@@ -3,7 +3,7 @@
 </div>
 <router-outlet></router-outlet>
 
-@if (router.url === "/") {
+@if (router.url === "/" && opere.length > 0) {
 
    <div class="hero" style="display: flex; justify-content: center;">
       <img style="height: 600px;" [src]="opere[0].imgPath" [alt]="opere[0].titolo">
