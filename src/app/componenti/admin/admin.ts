@@ -6,6 +6,7 @@ import { AuthService } from '../../auth/auth-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtenteService } from '../../services/utente-service';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -24,11 +25,14 @@ export class Admin implements OnInit{
   formUtente: Utente = {id: 0, nome: "", cognome: "", email: "", pass: "", admin: 0};
   mostraFormUtente= signal(false);
 
+  uploadInCorso = false; // serve per mostrare un loader durante l'upload appunto
+
   constructor(private operaService: OperaService,
               public auth: AuthService,
               private router: Router,
               private utenteService: UtenteService,
-              private routes: ActivatedRoute
+              private routes: ActivatedRoute,
+              private http: HttpClient,
               ){}
 
   ngOnInit(): void {
@@ -65,6 +69,28 @@ export class Admin implements OnInit{
     this.operaSelezionata = opera;
     this.formOpera = { ...opera };
     this.mostraFormOpera.set(true);
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    this.uploadInCorso = true;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.http.post<any>('http://localhost:8080/api/opere/upload', formData)
+      .subscribe({
+        next: (res) => {
+          this.formOpera.imgPath = res.url; // salva URL Cloudinary
+          this.uploadInCorso = false;
+        },
+        error: () => {
+          alert('Errore durante il caricamento immagine');
+          this.uploadInCorso = false;
+        }
+      });
   }
 
   salvaOpera() {

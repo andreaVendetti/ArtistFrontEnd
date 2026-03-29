@@ -9,7 +9,7 @@
                         <mat-card-title>{{opera.titolo}}</mat-card-title>
                         <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                     </mat-card-header>
-                    <img mat-card-image  src="http://localhost:8080/images/{{opera.imgPath}}"   alt="Work">
+                    <img mat-card-image [src]="opera.imgPath" alt="Work">
                     <mat-card-content>
                     </mat-card-content>
                     @if(auth.isAdmin()) {

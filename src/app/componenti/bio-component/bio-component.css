@@ -1,7 +1,17 @@
-.testo {
+.bio-container {
   display: flex;
-  max-width: 700px;
-  padding: 0 2rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;              /* ridotto da 4rem a 2rem */
+  max-width: 1100px;
+  margin: 6px auto;
+  padding: 0 4rem;        /* aggiunto padding laterale */
+}
+
+.testo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .testo strong {
@@ -13,16 +23,27 @@
 }
 
 .testo p {
-  font-size: 1rem !important;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 2;
   color: #222;
   letter-spacing: 0.3px;
+  margin: 0;
 }
 
 .testo p:first-child {
-  font-size: 1.1rem !important;
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.img-container {
+  flex-shrink: 0;
+}
+
+.imgProfile {
+  height: 500px;
+  width: 350px;
+  object-fit: cover;
+  filter: grayscale(10%);
 }

@@ -24,8 +24,16 @@
         <label>Anno</label>
         <input [(ngModel)]="formOpera.anno" type="number" placeholder="Anno" />
 
-        <label>Percorso immagine</label>
-        <input [(ngModel)]="formOpera.imgPath" placeholder="es. opera.jpg" />
+        <label>Immagine</label>
+        @if (uploadInCorso) {
+          <p>Caricamento in corso...</p>
+        }
+
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+        @if (formOpera.imgPath) {
+          <img [src]="formOpera.imgPath" style="max-width: 200px; margin-top: 0.5rem;" />
+        }
         
         <div class="form-buttons">
           <button mat-button (click)="salvaOpera()">Salva</button>
