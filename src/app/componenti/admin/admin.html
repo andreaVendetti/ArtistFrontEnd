@@ -29,6 +29,9 @@
           <p>Caricamento in corso...</p>
         }
 
+        <label>Opera</label>
+        <input type="checkbox" [(ngModel)]="formOpera.work" [value]="true">
+
         <input type="file" (change)="onFileSelected($event)" accept="image/*" />
 
         @if (formOpera.imgPath) {

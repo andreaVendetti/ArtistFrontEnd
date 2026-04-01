@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { OperaService } from '../../services/opera-service';
 import { MaterialModule } from '../../material-module/material-module-module';
 import { ServizioHome } from '../../services/servizio-home';
@@ -14,13 +14,20 @@ import { Router } from '@angular/router';
 
 export class Opere implements OnInit{
   opere : any
-   
-  constructor(private servizioOpere : OperaService, private servizioHome : ServizioHome, public auth: AuthService, private router: Router){}
+  caricamento = true
+  constructor(
+    private servizioOpere : OperaService, 
+    private servizioHome : ServizioHome, 
+    public auth: AuthService, 
+    private router: Router,
+    private cdr : ChangeDetectorRef
+  ){}
 
   ngOnInit(): void {
     this.servizioHome.isHome.set(false)
     this.servizioOpere.getOpere().subscribe(data => {
       this.opere = data;
+      this.cdr.detectChanges();
     })
 
    

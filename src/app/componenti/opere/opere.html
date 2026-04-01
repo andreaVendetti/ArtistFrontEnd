@@ -1,27 +1,21 @@
 <div class="lista-opere">
-
-    @for (opera of opere; track $index) {
-        @if(opera.work == true){
-
-            <div class="contenitore">
-                <mat-card  style="max-width: 800px;" appearance="outlined" >
-                    <mat-card-header>
-                        <mat-card-title>{{opera.titolo}}</mat-card-title>
-                        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-                    </mat-card-header>
-                    <img mat-card-image [src]="opera.imgPath" alt="Work">
-                    <mat-card-content>
-                    </mat-card-content>
-                    @if(auth.isAdmin()) {
-                        <mat-card-actions>
-                        <button mat-button (click)="modifica(opera.id)"> Modifica</button>
-                        <button mat-button (click)="elimina(opera.id)"> Elimina</button>
-                        </mat-card-actions>
-                    }
-                </mat-card>
-            </div>
-            <br>
+  @for (opera of opere; track $index) {
+    @if(opera.work == true) {
+      <div class="card">
+        <div class="card-img">
+          <img [src]="opera.imgPath" [alt]="opera.titolo">
+        </div>
+        <div class="card-info">
+          <h3>{{ opera.titolo }}</h3>
+          <p>{{opera.anno}};{{ opera.descrizione}}</p>
+        </div>
+        @if(auth.isAdmin()) {
+          <div class="card-actions">
+            <button (click)="modifica(opera.id)">Modifica</button>
+            <button (click)="elimina(opera.id)">Elimina</button>
+          </div>
         }
+      </div>
     }
-
+  }
 </div>

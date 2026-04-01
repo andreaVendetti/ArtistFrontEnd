@@ -1,10 +1,8 @@
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzFormModule, NzFormItemComponent } from 'ng-zorro-antd/form';
-import { NzInputModule, NzInputWrapperComponent } from 'ng-zorro-antd/input';
-import { ɵNzTransitionPatchDirective } from "ng-zorro-antd/core/transition-patch";
-import { NzColDirective } from "ng-zorro-antd/grid";
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 export const NZ_LOGIN_MODULES = [
   NzFormModule,
@@ -23,5 +21,6 @@ export const NZ_OPERE_INSERT_MODULES = [
 
 export const NZ_OPERE_LIST_MODULES = [ 
   NzInputModule,  
-  NzIconModule
+  NzIconModule,
+  NzSpinModule
 ];

@@ -11,19 +11,27 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
+
 export class Home implements OnInit {
   opere: Opera[] = [];
+  operaHome : Opera | null = null;
 
   constructor(
     private servizioOpera: OperaService,
     public router: Router,
     private cdr: ChangeDetectorRef
   ) {}
-
+  
   ngOnInit(): void {
     this.servizioOpera.getOpere().subscribe((data) => {
       this.opere = data;
+      this.operaHome = this.getOperaRandom();
       this.cdr.detectChanges(); // forza aggiornamento UI
     });
+  }
+  
+  getOperaRandom() : Opera {
+    const index = Math.floor(Math.random() * this.opere.length);
+    return this.opere[index]
   }
 }

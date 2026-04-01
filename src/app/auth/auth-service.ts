@@ -9,7 +9,7 @@ import { environment } from '../componenti/environments/environment';
 export class AuthService {
 
 
-  private apiUrl = `${environment.apiUrl}/api/opere`;
+  private apiUrl = `${environment.apiUrl}/api/auth`;
   //variabile peer indicare l'utente loggato
   private _utente : any = null;
 
