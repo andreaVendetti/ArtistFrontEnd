@@ -1,58 +1,42 @@
-.enter-container {
-  top: 50px;          
-  left: 0;  
-  padding: 10px;
-  font-weight: bold;
-}
-.enter-container p {
-  margin: 0;
-}
-.enter-animation {
-  animation: slide-fade 1s;
-}
-@keyframes slide-fade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.toggle-btn {
-  background: transparent;
-  border: 1px solid var(--primary-contrast, black);
-  color: var(--primary-contrast, black);
-  padding: 10px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-}
 :host {
   display: block;
+}
+
+.menu-wrapper {
+  display: block;
+  position: relative;
+  height: 60px;
+  transition: height 500ms ease-out;
+
+}
+
+.menu-wrapper.aperto {
   height: 200px;
 }
-.leave-container {
-  margin-top: 1em;
-  padding: 20px;
+
+.enter-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  padding: 10px;
   font-weight: bold;
-  font-size: 20px;
   opacity: 1;
-  transition: opacity 200ms ease-in;
+  transition: opacity 500ms ease-out;
   @starting-style {
     opacity: 0;
   }
 }
-.leave-container p {
+
+.enter-container p {
   margin: 0;
 }
+
 .leaving {
   opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 500ms ease-out,
-    transform 500ms ease-out;
+  pointer-events: none;
 }
+
 .toggle-btn {
   background: transparent;
   border: 1px solid var(--primary-contrast, black);
@@ -61,8 +45,18 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.divElement {
+  margin-bottom: 15px;
+}
+
 @media (max-width: 768px) {
-  :host {
+  .menu-wrapper {
+    height: auto;
+    overflow: visible;
+  }
+
+  .menu-wrapper.aperto {
     height: auto;
   }
 
@@ -80,6 +74,7 @@
     align-items: center;
     font-size: 2rem;
     gap: 2rem;
+    transform: none;
   }
 
   .enter-container div {

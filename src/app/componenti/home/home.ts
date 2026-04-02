@@ -25,13 +25,16 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.servizioOpera.getOpere().subscribe((data) => {
       this.opere = data;
-      this.operaHome = this.getOperaRandom();
+      this.operaHome = this.getFotoRandom();
       this.cdr.detectChanges(); // forza aggiornamento UI
     });
   }
   
-  getOperaRandom() : Opera {
+  getFotoRandom() : Opera {
     const index = Math.floor(Math.random() * this.opere.length);
+    if(this.opere[index].work == true){
+      return this.getFotoRandom()
+    }
     return this.opere[index]
   }
 }

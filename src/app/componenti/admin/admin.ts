@@ -52,6 +52,10 @@ export class Admin implements OnInit{
         this.apriFormModifica(opera);
       });
     }
+    if (params['elimina']) {
+      const id = Number(params['elimina']);
+      this.eliminaOpera(id);
+    }
   });
   }
 

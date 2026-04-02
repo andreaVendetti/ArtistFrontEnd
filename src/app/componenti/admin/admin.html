@@ -4,7 +4,7 @@
   <div class="admin-header">
     <h2>Pannello Admin</h2>
     <div class="header-buttons">
-      <button mat-button (click)="apriFormNuova()">+ Aggiungi opera</button>
+      <button mat-button (click)="apriFormNuova()">+ Aggiungi Lavoro</button>
       <button mat-button (click)="mostraFormUtente.set(true)">Il mio profilo</button>
       <button mat-button (click)="logout()">Logout</button>
     </div>
@@ -13,7 +13,7 @@
   @if (mostraFormOpera()) {
     <div class="overlay">
       <div class="form-container">
-        <h2>{{ operaSelezionata ? 'Modifica opera' : 'Nuova opera' }}</h2>
+        <h2>{{ operaSelezionata ? 'Modifica lavoro' : 'Nuovo lavoro' }}</h2>
 
         <label>Titolo</label>
         <input [(ngModel)]="formOpera.titolo" placeholder="Titolo" />
@@ -29,7 +29,7 @@
           <p>Caricamento in corso...</p>
         }
 
-        <label>Opera</label>
+        <label>Lavoro</label>
         <input type="checkbox" [(ngModel)]="formOpera.work" [value]="true">
 
         <input type="file" (change)="onFileSelected($event)" accept="image/*" />

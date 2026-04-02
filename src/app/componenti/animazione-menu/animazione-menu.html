@@ -1,29 +1,26 @@
-<div style="display: block;" 
+<div class="menu-wrapper" [class.aperto]="mouseIn" 
      (mouseenter)="show()" 
      (mouseleave)="hide()">
   
-  <a style="font-size: xx-large; color: black; cursor: pointer;"
+  <a style= "font-size: 80px ; color: black; cursor: pointer; white-space: nowrap;"
         (click)="toggleMenu()">
     Paolo Frattarola
   </a>
 
-  @if (mouseIn) {
-
-    <div class="enter-container">
-      <div (click)="chiudiMenu()">
-        <a routerLink="/" style="color: black;">Home</a>
-      </div>
-      <div (click)="chiudiMenu()">
-        <a routerLink="/works" style="color: black;">Works</a>
-      </div>
-      <div (click)="chiudiMenu()">
-        <a routerLink="/about" style="color: black;">Profile</a>
-      </div>
-      @if(auth.isAdmin()){
-          <div>
-            <a routerLink="/admin" style="color: black;">Admin</a>
-          </div>
-      }
+  <div class="enter-container" style="font-size: 28px;" [class.leaving]="!mouseIn">
+    <div class="divElement" (click)="chiudiMenu()">
+      <a routerLink="/" style="color: black;">Home</a>
     </div>
-  }
+    <div class="divElement" (click)="chiudiMenu()">
+      <a routerLink="/works" style="color: black;">Works</a>
+    </div>
+    <div class="divElement" (click)="chiudiMenu()">
+      <a routerLink="/about" style="color: black;">Profile</a>
+    </div>
+    @if(auth.isAdmin()){
+      <div class="divElement">
+        <a routerLink="/admin" style="color: black;">Admin</a>
+      </div>
+    }
+  </div>
 </div>
