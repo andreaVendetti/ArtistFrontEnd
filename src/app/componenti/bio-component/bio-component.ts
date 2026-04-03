@@ -15,7 +15,7 @@ export class BioComponent implements OnInit {
   constructor(private operaService : OperaService,  private cdr: ChangeDetectorRef, private zone :NgZone){}
   
     ngOnInit(): void {
-    this.operaService.get(3).subscribe((data) => {
+    this.operaService.get(2).subscribe((data) => {
       this.zone.run(() => {
         this.imgP = data;
         this.cdr.detectChanges();

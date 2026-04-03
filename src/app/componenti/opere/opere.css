@@ -1,14 +1,32 @@
-.lista-opere {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+.carosello-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   max-width: 1200px;
   margin: 3rem auto;
   padding: 0 2rem;
 }
 
-.card:nth-child(even) {
-  margin-top: 4rem; 
+.carosello {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.freccia {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #222;
+  flex-shrink: 0;
+}
+
+.freccia:hover {
+  color: #000;
 }
 
 .card-img img {
@@ -57,17 +75,15 @@
 }
 
 @media (max-width: 600px) {
-  .lista-opere {
-    grid-template-columns: repeat(2, 1fr);  
+  .carosello-wrapper {
     padding: 0 1rem;
-    gap: 1rem;
   }
 
-  .card:nth-child(even) {
-    margin-top: 2rem;  
+  .freccia {
+    font-size: 1.5rem;
   }
 
   .card-info h3 {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
   }
 }

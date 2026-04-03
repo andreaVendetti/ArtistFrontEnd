@@ -1,14 +1,15 @@
-<div class="lista-opere">
-  @for (opera of opere; track $index) {
-    @if(opera.work == true) {
+<div class="carosello-wrapper">
+  <button class="freccia sinistra" (click)="prev()">&#8592;</button>
+
+  <div class="carosello">
+    @for (opera of opereVisibili(); track $index) {
       <div class="card">
         <div class="card-img">
           <img [src]="opera.imgPath" [alt]="opera.titolo">
         </div>
         <div class="card-info">
           <h3>{{ opera.titolo }}</h3>
-          <p>{{opera.anno}};{{ opera.descrizione}}</p>
-          
+          <p>{{ opera.anno }}; {{ opera.descrizione }}</p>
         </div>
         @if(auth.isAdmin()) {
           <div class="card-actions">
@@ -18,5 +19,7 @@
         }
       </div>
     }
-  }
+  </div>
+
+  <button class="freccia destra" (click)="next()">&#8594;</button>
 </div>

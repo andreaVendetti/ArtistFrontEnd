@@ -7,7 +7,6 @@
   position: relative;
   height: 60px;
   transition: height 500ms ease-out;
-
 }
 
 .menu-wrapper.aperto {
@@ -23,9 +22,6 @@
   font-weight: bold;
   opacity: 1;
   transition: opacity 500ms ease-out;
-  @starting-style {
-    opacity: 0;
-  }
 }
 
 .enter-container p {
@@ -33,9 +29,31 @@
 }
 
 .leaving {
-  opacity: 0;
   pointer-events: none;
 }
+
+.enter-container div {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.menu-wrapper.aperto .enter-container div {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.menu-wrapper.aperto .enter-container div:nth-child(1) { transition-delay: 0ms; }
+.menu-wrapper.aperto .enter-container div:nth-child(2) { transition-delay: 100ms; }
+.menu-wrapper.aperto .enter-container div:nth-child(3) { transition-delay: 200ms; }
+.menu-wrapper.aperto .enter-container div:nth-child(4) { transition-delay: 300ms; }
+
+
+.enter-container.leaving div:nth-child(1) { transition-delay: 300ms; }
+.enter-container.leaving div:nth-child(2) { transition-delay: 200ms; }
+.enter-container.leaving div:nth-child(3) { transition-delay: 100ms; }
+.enter-container.leaving div:nth-child(4) { transition-delay: 0ms; }
 
 .toggle-btn {
   background: transparent;
@@ -50,14 +68,31 @@
   margin-bottom: 15px;
 }
 
+.titolo-menu {
+  font-size: 80px;
+  color: black;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
-  .menu-wrapper {
-    height: auto;
-    overflow: visible;
+  .titolo-menu {
+    font-size: 11vw;
+    white-space: normal;
+  }
+}
+
+
+@media (max-width: 768px) {
+  menu-wrapper.aperto .enter-container div {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0ms;
   }
 
-  .menu-wrapper.aperto {
-    height: auto;
+  .enter-container.leaving {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
   }
 
   .enter-container {
